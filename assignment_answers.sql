@@ -9,6 +9,8 @@
           SELECT ncbi_id
           FROM taxonomy
           WHERE species = 'Panthera tigris sumatrae';
+
+
 -- Question 2: Find all the columns that can be used to connect the tables in the given database.
 
    Query:     SELECT 
@@ -18,6 +20,8 @@
               REFERENCED_COLUMN_NAME
           FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE
           WHERE REFERENCED_TABLE_NAME IS NOT NULL;
+
+
 -- Question 3: Which type of rice has the longest DNA sequence? (hint: use the rfamseq and the taxonomy tables)
 
    Query:    SELECT t.species, r.length
@@ -27,6 +31,7 @@
           JOIN rfamseq r ON t.ncbi_id = r.ncbi_id
           ORDER BY r.length DESC
           LIMIT 1;
+
 
 -- Question 4:  We want to paginate a list of the family names and their longest DNA sequence lengths (in descending order of length) where only families that have DNA sequence lengths greater than 1,000,000 are included. Give a query that will return the 9th page when there are 15 results per page. (hint: we need the family accession ID, family name and the maximum length in the results)
 
